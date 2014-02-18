@@ -104,12 +104,47 @@
 <span class="c1">// events fire asynchronously</span>
 <span class="kd">var</span> <span class="nx">no</span><span class="p">;</span>
 
-<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">no</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setting: '</span> <span class="o">+</span> <span class="nx">no</span><span class="p">);</span>
     <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
 <span class="p">}</span>
+</pre></div>
+
+<p><br><br><br></p>
+
+<hr><h1>
+<a name="variables" class="anchor" href="#variables"><span class="octicon octicon-link"></span></a>Variables</h1>
+
+<h3>
+<a name="declared-with-var-keyword" class="anchor" href="#declared-with-var-keyword"><span class="octicon octicon-link"></span></a>Declared with “var” keyword</h3>
+
+<h3>
+<a name="dynamically-typed" class="anchor" href="#dynamically-typed"><span class="octicon octicon-link"></span></a>Dynamically typed</h3>
+
+<h3>
+<a name="simple-types-are-copied-by-value" class="anchor" href="#simple-types-are-copied-by-value"><span class="octicon octicon-link"></span></a>Simple types are copied by value</h3>
+
+<h3>
+<a name="complex-types-are-copied-by-reference" class="anchor" href="#complex-types-are-copied-by-reference"><span class="octicon octicon-link"></span></a>Complex types are copied by reference</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// simple values like are copied by value</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+<span class="c1">// complex values are passed by reference</span>
+<span class="kd">var</span> <span class="nx">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="s2">"Ford"</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="s2">"Mustang"</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="mi">28000</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">myCar</span> <span class="o">=</span> <span class="nx">yourCar</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myCar</span><span class="p">);</span>
 </pre></div>
       </section>
       <footer>
