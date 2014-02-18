@@ -86,7 +86,31 @@
 <h1>
 <a name="single-threaded-and-event-driven" class="anchor" href="#single-threaded-and-event-driven"><span class="octicon octicon-link"></span></a>Single Threaded and Event Driven</h1>
 
-<hr><p>jaja</p>
+<hr><h3>
+<a name="basic-flow-of-execution" class="anchor" href="#basic-flow-of-execution"><span class="octicon octicon-link"></span></a>Basic flow of execution:</h3>
+
+<ol>
+<li>Script is parsed and lexed </li>
+<li>Code is executed </li>
+<li>Events are registered </li>
+<li>Idles in event loop </li>
+<li>Triggered events are added to the queue (return to 1) </li>
+</ol><div class="highlight highlight-javascript"><pre><span class="c1">// one thing at a time</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">250</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"Wait!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// events fire asynchronously</span>
+<span class="kd">var</span> <span class="nx">no</span><span class="p">;</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">no</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setting: '</span> <span class="o">+</span> <span class="nx">no</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
