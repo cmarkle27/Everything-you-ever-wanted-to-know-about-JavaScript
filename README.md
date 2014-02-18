@@ -26,7 +26,7 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 ```
   
   
-  
+***    
   
   
   
