@@ -1,7 +1,7 @@
 # JavaScript Looks Familiar
 
 
-## Designed to be easy for developers to pick up  
+## __Designed to be easy for developers to pick up__  
 
 ```javascript
 if (encoder.state == "cue record") {
@@ -9,7 +9,7 @@ if (encoder.state == "cue record") {
 }
 ```
 
-## Is actually based on the languages Scheme and Self  
+## __Is actually based on the languages Scheme and Self__  
 
 ```javascript
 function Y(le) {
@@ -24,17 +24,21 @@ function Y(le) {
 
 var sliced = Array.prototype.slice.call(arguments, 2);
 ```
-<br><br>
+<br><br><br>
 
 ***    
 
 # JavaScript Requires an Environment  
 
-## Provides a root object and an environment API
+## __Provides a root object and an environment API__
 
-Browser: window object and the DOM + BOM 
+* Browser: window object and the DOM + BOM  
+* Server: process object and the native modules 
 
-Server: process object and the native modules  
+<br><br><br>
+
+# Single Threaded and Event Driven 
+
 
 
 
