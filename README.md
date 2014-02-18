@@ -69,13 +69,14 @@ for (var i = 1; i <= 10; i++) {
 
 <br><br><br>
 
+# Variables 
+
 ***  
 
-# Variables 
-### Declared with “var” keyword
-### Dynamically typed
-### Simple types are copied by value
-### Complex types are copied by reference
+* Declared with “var” keyword
+* Dynamically typed
+* Simple types are copied by value
+* Complex types are copied by reference
 
 ```javascript
 // simple values like are copied by value
@@ -96,8 +97,63 @@ yourCar.mileage = 30000;
 console.log(myCar);
 ```
 
+<br><br><br>
 
+# Everything is an Object 
 
+***  
+
+## Even primitives are objects /*
+
+```javascript
+// strings are objects
+var name = "Christopher";
+console.log(typeof name, name.length);
+
+// numbers are objects
+var myNumber = 13.27;
+console.log(typeof myNumber, myNumber.toFixed());
+
+// objects are objects
+var obj = {
+  "title": "Leviathan Wakes",
+  "author": "James S. A. Corey"
+  "pages": 561
+}
+console.log(typeof obj, obj.author)
+
+// functions are objects
+var fun = function myFun() {}
+console.log(typeof fun, fun.name);
+```
+
+## Objects can contain simple or complex types (even functions)
+
+```javascript
+var recording = new Object();
+
+// number
+recording.duration = 31000;
+
+// string
+recording.slug = "Cat Roomba Video";
+
+// array
+recording.tags = ["funny", "lolcat", "roomba"];
+
+// object
+recording.meta = {
+  "bureau" : "DC",
+  "date" : "08/12/2007"
+};
+
+// function
+recording.getDuration = function() {
+  return Math.floor(this.duration / 1000).toFixed();
+};
+
+console.log(recording);
+```
 
 
 
