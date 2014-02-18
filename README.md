@@ -185,23 +185,7 @@ console.log(sayHello)
 
 ### This fits well with event driven programming
 
-```javascript
-var buttonA = document.getElementById("buttonA");
-var buttonB = document.getElementById("buttonB");
-var outputDiv = document.getElementById("myOutput");
-
-var buttonClicked = function(event) {
-  outputDiv.innerHTML = "Button clicked (named)";
-}
-
-// named function
-buttonA.addEventListener("click", buttonClicked, false);
-
-// anonymous function
-buttonB.addEventListener("click", function(event) {
-  outputDiv.innerHTML = "Button clicked (anonymous)";
-}, false);
-```
+[http://jsbin.com/zidad/2/edit?html,js,output](http://jsbin.com/zidad/2/edit?html,js,output)
 
 <br><br><br>
 
@@ -249,6 +233,132 @@ Math
 # JavaScript is Prototypal
 
 ***  
+
+### Instances are created from objects instead of classes
+
+```javascript
+var Animal = function(species) {
+  this.species = species;
+  this.birthday = "02/11/2014";
+  return this; // implied
+};
+
+var carl = new Animal("tiger");
+
+console.log(carl.constructor);
+console.log(carl instanceof Animal);
+console.log(carl instanceof Object);
+```
+
+
+### Inherit built-in properties
+
+```javascript
+// inherited object properties
+var serenity = { "class": "Firefly", "captain": "Malcolm Reynolds" };
+
+console.log(serenity.toString());
+console.log(serenity.constructor);
+
+// inherited function properties
+var spaceShip = function launcher(vehicle) {
+  console.log(vehicle + " blasting off!");
+};
+
+console.log(spaceShip.name);
+console.log(spaceShip.length);
+console.log(spaceShip.prototype);
+
+// inherited array properties
+var groceries = ["turkey", "bread", "cheese", "carrots"];
+
+console.log(groceries.length);
+console.log(groceries.reverse());
+```
+
+### Can model classical inheritance (but don’t)
+
+```javascript
+// Animal Constructor
+function Animal(species) { 
+	this.species = species;
+	this.energy = 15;
+	this.sound = "...";
+}
+
+// Animal.prototype is a generic object we can add properties to
+Animal.prototype.makeNoise = function(){ 
+	this.energy -= 3;
+	console.log(this.sound);
+};
+
+Animal.prototype.reportEnergy = function(){ 
+	console.log("Energy Level:", this.energy);
+}; 
+
+Animal.prototype.eat = function(food){ 
+	if (food instanceof Food) {
+		this.energy += 5;
+	}
+};  
+
+Animal.prototype.sleep = function(){ 
+	this.energy += 10;
+};
+
+// Tiger Constructor
+var Tiger = function() { 
+	this.sound = 'Meow!';
+};
+
+Tiger.prototype = new Animal('Tiger');
+ 
+Tiger.prototype.eat = function(food){ 
+	if (food instanceof Food && food.type !== 'grain') {
+		this.energy += 5;
+	}
+};
+
+// Instance
+var timmy = new Tiger();
+
+console.log(timmy);
+
+// ----------------------------------------------------------------
+
+var Animal = {
+  makeNoise: function() {
+    this.energy -= 3;
+    console.log(this.sound + " I am a " + this.species + ". Energy: " + this.energy);
+  }
+};
+
+// Tiger Constructor
+var Tiger = function() { 
+	this.sound = 'Meow!';
+	this.species = 'Tiger';
+	this.energy = 15;  
+};
+
+var timmy = new Tiger();
+
+// use duck typing
+Animal.makeNoise.call(timmy);
+```
+
+<br><br><br>
+
+# The Scope Chain
+
+***  
+
+### Function level (not block level)
+
+### Variables are defined at parse time (lexical scoping)
+
+### Closures 
+
+
 
 
 
