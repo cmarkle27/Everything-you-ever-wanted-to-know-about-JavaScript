@@ -40,7 +40,7 @@
       </nav>
       <section>
         <h1>
-<a name="javascript-looks-familiar" class="anchor" href="#javascript-looks-familiar"><span class="octicon octicon-link"></span></a>JavaScript Looks Familiar</h1>
+<a name="javascript-only-looks-familiar" class="anchor" href="#javascript-only-looks-familiar"><span class="octicon octicon-link"></span></a>JavaScript Only Looks Familiar</h1>
 
 <hr><h3>
 <a name="designed-to-be-easy-for-developers-to-pick-up" class="anchor" href="#designed-to-be-easy-for-developers-to-pick-up"><span class="octicon octicon-link"></span></a><strong>Designed to be easy for developers to pick up</strong>
@@ -449,17 +449,12 @@
 <h1>
 <a name="execution-context" class="anchor" href="#execution-context"><span class="octicon octicon-link"></span></a>Execution Context</h1>
 
-<hr><h3>
-<a name="the-this-keyword" class="anchor" href="#the-this-keyword"><span class="octicon octicon-link"></span></a>The 'this' Keyword</h3>
+<hr><p>The 'this' Keyword refers to current execution contexts</p>
 
-<ul>
-<li>refers to current execution contexts</li>
-</ul><h3>
-<a name="four-possible-contexts" class="anchor" href="#four-possible-contexts"><span class="octicon octicon-link"></span></a>Four possible contexts</h3>
+<h3>
+<a name="function" class="anchor" href="#function"><span class="octicon octicon-link"></span></a>Function</h3>
 
-<ul>
-<li>Function </li>
-</ul><div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// 'this' refers to the global object </span>
     <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
 
@@ -468,9 +463,10 @@
 <span class="p">}</span>
 </pre></div>
 
-<ul>
-<li>Object Method</li>
-</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+<h3>
+<a name="object-method" class="anchor" href="#object-method"><span class="octicon octicon-link"></span></a>Object Method</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">"Chris"</span><span class="p">,</span>
     <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// refers to the person object</span>
@@ -481,9 +477,10 @@
 <span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
 </pre></div>
 
-<ul>
-<li>Constructor </li>
-</ul><div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+<h3>
+<a name="constructor" class="anchor" href="#constructor"><span class="octicon octicon-link"></span></a>Constructor</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">// it depends</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// implied</span>
 <span class="p">}</span>
@@ -495,9 +492,10 @@
 <span class="kd">var</span> <span class="nx">transport</span> <span class="o">=</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="s2">"Millennium Falcon"</span><span class="p">);</span> 
 </pre></div>
 
-<ul>
-<li>Call &amp; Apply</li>
-</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+<h3>
+<a name="call--apply" class="anchor" href="#call--apply"><span class="octicon octicon-link"></span></a>Call &amp; Apply</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">name</span><span class="o">:</span> <span class="s2">"Chris"</span><span class="p">,</span>
     <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// refers to the invoking object</span>
@@ -512,6 +510,17 @@
 <span class="c1">// refers to zombie, this.name will be "Fred"</span>
 <span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">zombie</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
 </pre></div>
+
+<p><br><br><br></p>
+
+<h1>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h1>
+
+<hr><ul>
+<li><a href="http://bonsaiden.github.io/JavaScript-Garden/">JavaScript Garden</a></li>
+<li><a href="http://www.javascriptenlightenment.com/">JavaScript Enlightment</a></li>
+<li><a href="https://coderwall.com/p/thslzw">JavaScript: Understanding 'this'</a></li>
+</ul>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
