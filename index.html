@@ -359,10 +359,12 @@
 <span class="kd">var</span> <span class="nx">timmy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tiger</span><span class="p">();</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">timmy</span><span class="p">);</span>
+</pre></div>
 
-<span class="c1">// ----------------------------------------------------------------</span>
+<h3>
+<a name="duck-typing" class="anchor" href="#duck-typing"><span class="octicon octicon-link"></span></a>Duck Typing</h3>
 
-<span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
   <span class="nx">makeNoise</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s2">" I am a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s2">". Energy: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
@@ -389,6 +391,24 @@
 
 <hr><h3>
 <a name="function-level-not-block-level" class="anchor" href="#function-level-not-block-level"><span class="octicon octicon-link"></span></a>Function level (not block level)</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// loop</span>
+<span class="kd">var</span> <span class="nx">make</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">make</span> <span class="o">=</span> <span class="s2">"Ford"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">make</span><span class="p">);</span>
+
+
+<span class="c1">// function</span>
+<span class="kd">var</span> <span class="nx">getMake</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">make</span> <span class="o">=</span> <span class="s2">"Chevy"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">make</span><span class="p">);</span>
+</pre></div>
 
 <h3>
 <a name="variables-are-defined-at-parse-time-lexical-scoping" class="anchor" href="#variables-are-defined-at-parse-time-lexical-scoping"><span class="octicon octicon-link"></span></a>Variables are defined at parse time (lexical scoping)</h3>
