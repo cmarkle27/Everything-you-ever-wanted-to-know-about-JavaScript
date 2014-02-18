@@ -323,9 +323,10 @@ Tiger.prototype.eat = function(food){
 var timmy = new Tiger();
 
 console.log(timmy);
+```
+### Duck Typing
 
-// ----------------------------------------------------------------
-
+```javascript
 var Animal = {
   makeNoise: function() {
     this.energy -= 3;
@@ -353,6 +354,26 @@ Animal.makeNoise.call(timmy);
 ***  
 
 ### Function level (not block level)
+
+```javascript
+// loop
+var make;
+
+for (var i = 0; i < 5; i++) {
+  make = "Ford";
+}
+
+console.log(make);
+
+
+// function
+var getMake = function() {
+  var make = "Chevy";
+};
+
+console.log(make);
+```
+
 
 ### Variables are defined at parse time (lexical scoping)
 
