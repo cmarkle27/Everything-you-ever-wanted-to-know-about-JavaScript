@@ -1,4 +1,4 @@
-# JavaScript Looks Familiar
+# JavaScript Only Looks Familiar
 
 ***  
 
@@ -414,12 +414,9 @@ count();
 
 ***  
 
-### The 'this' Keyword
-* refers to current execution contexts
+The 'this' Keyword refers to current execution contexts
 
-### Four possible contexts
-
-* Function 
+### Function 
 
 ```javascript
 function add(x, y) {
@@ -431,7 +428,7 @@ function add(x, y) {
 }
 ```
 
-* Object Method
+### Object Method
 
 ```javascript
 var person = {
@@ -445,7 +442,7 @@ var person = {
 person.sayHello();
 ```
 
-* Constructor 
+### Constructor 
 
 ```javascript
 function SpaceShip(name) {
@@ -460,7 +457,7 @@ var transport = new SpaceShip("Millennium Falcon");
 var transport = SpaceShip("Millennium Falcon"); 
 ```
 
-* Call & Apply
+### Call & Apply
 
 ```javascript
 var person = {
@@ -479,7 +476,14 @@ var zombie = {
 person.sayHello.apply(zombie, params);
 ```
 
+<br><br><br>
 
+# Resources
+
+***  
+* [JavaScript Garden](http://bonsaiden.github.io/JavaScript-Garden/)
+* [JavaScript Enlightment](http://www.javascriptenlightenment.com/)
+* [JavaScript: Understanding 'this'](https://coderwall.com/p/thslzw)
 
 
 
