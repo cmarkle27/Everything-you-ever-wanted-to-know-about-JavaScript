@@ -1,5 +1,6 @@
 # JavaScript Looks Familiar
 
+***  
 
 ## __Designed to be easy for developers to pick up__  
 
@@ -24,24 +25,25 @@ function Y(le) {
 
 var sliced = Array.prototype.slice.call(arguments, 2);
 ```
-<br><br>
-
-***    
-<br>
+<br><br><br>
 
 # JavaScript Requires an Environment  
+
+***  
 
 ## __Provides a root object and an environment API__
 
 * Browser: window object and the DOM + BOM  
 * Server: process object and the native modules 
 
-<br><br>
-
-***    
-<br>
+<br><br><br>
 
 # Single Threaded and Event Driven 
+
+***  
+
+jaja
+
 
 
 
