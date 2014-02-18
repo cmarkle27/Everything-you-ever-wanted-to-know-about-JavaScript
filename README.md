@@ -156,7 +156,19 @@ recording.getDuration = function() {
 
 console.log(recording);
 ```
+<br><br><br>
 
+# As Promised
+
+***  
+
+<iframe width="420" height="315" src="//www.youtube.com/embed/wBqzjH91WFo" frameborder="0" allowfullscreen></iframe>
+
+<br><br><br>
+
+# JavaScript is Functional
+
+***  
 
 
 
