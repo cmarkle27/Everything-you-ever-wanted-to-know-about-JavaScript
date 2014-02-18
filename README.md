@@ -303,20 +303,20 @@ Animal.prototype.eat = function(food){
 };  
 
 Animal.prototype.sleep = function(){ 
-	this.energy += 10;
+    this.energy += 10;
 };
 
 // Tiger Constructor
 var Tiger = function() { 
-	this.sound = 'Meow!';
+    this.sound = 'Meow!';
 };
 
 Tiger.prototype = new Animal('Tiger');
  
 Tiger.prototype.eat = function(food){ 
-	if (food instanceof Food && food.type !== 'grain') {
-		this.energy += 5;
-	}
+    if (food instanceof Food && food.type !== 'grain') {
+	this.energy += 5;
+    }
 };
 
 // Instance
@@ -328,17 +328,17 @@ console.log(timmy);
 
 ```javascript
 var Animal = {
-  makeNoise: function() {
-    this.energy -= 3;
-    console.log(this.sound + " I am a " + this.species + ". Energy: " + this.energy);
-  }
+    makeNoise: function() {
+	this.energy -= 3;
+    	console.log(this.sound + " I am a " + this.species + ". Energy: " + this.energy);
+    }
 };
 
 // Tiger Constructor
 var Tiger = function() { 
-	this.sound = 'Meow!';
-	this.species = 'Tiger';
-	this.energy = 15;  
+    this.sound = 'Meow!';
+    this.species = 'Tiger';
+    this.energy = 15;  
 };
 
 var timmy = new Tiger();
@@ -360,13 +360,13 @@ var foo = 0; // global scope
 console.log(foo); // logs 0
 
 var myFunction = (function() {
-	var foo = 1; // local scope
-	console.log(foo); // logs 1
+    var foo = 1; // local scope
+    console.log(foo); // logs 1
 	
-	var myNestedFunction = (function() {
-		var foo = 2; // local scope
-		console.log( foo); // logs 2
-	})();
+    var myNestedFunction = (function() {
+	var foo = 2; // local scope
+	console.log( foo); // logs 2
+    })();
 
 })();
 
@@ -392,8 +392,25 @@ foo(); // logs 60
 
 ### Closures 
 
+```javascript
+var parentFunction = function() {
+    var foo = 'foo';
+    return function() { // anonymous function being returned 
+    	console.log(foo); // logs 'foo'
+    }
+} // nestedFunction refers to the nested function returned from parentFunction 
 
+var nestedFunction = parentFunction();
 
+nestedFunction();
+```
+
+<br><br><br>
+
+# Execution Context
+
+***  
+...
 
 
 
