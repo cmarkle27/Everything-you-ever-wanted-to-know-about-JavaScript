@@ -114,22 +114,15 @@
 
 <p><br><br><br></p>
 
-<hr><h1>
+<h1>
 <a name="variables" class="anchor" href="#variables"><span class="octicon octicon-link"></span></a>Variables</h1>
 
-<h3>
-<a name="declared-with-var-keyword" class="anchor" href="#declared-with-var-keyword"><span class="octicon octicon-link"></span></a>Declared with “var” keyword</h3>
-
-<h3>
-<a name="dynamically-typed" class="anchor" href="#dynamically-typed"><span class="octicon octicon-link"></span></a>Dynamically typed</h3>
-
-<h3>
-<a name="simple-types-are-copied-by-value" class="anchor" href="#simple-types-are-copied-by-value"><span class="octicon octicon-link"></span></a>Simple types are copied by value</h3>
-
-<h3>
-<a name="complex-types-are-copied-by-reference" class="anchor" href="#complex-types-are-copied-by-reference"><span class="octicon octicon-link"></span></a>Complex types are copied by reference</h3>
-
-<div class="highlight highlight-javascript"><pre><span class="c1">// simple values like are copied by value</span>
+<hr><ul>
+<li>Declared with “var” keyword</li>
+<li>Dynamically typed</li>
+<li>Simple types are copied by value</li>
+<li>Complex types are copied by reference</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="c1">// simple values like are copied by value</span>
 <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
 <span class="nx">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
@@ -145,6 +138,63 @@
 <span class="nx">yourCar</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span>
 
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myCar</span><span class="p">);</span>
+</pre></div>
+
+<p><br><br><br></p>
+
+<h1>
+<a name="everything-is-an-object" class="anchor" href="#everything-is-an-object"><span class="octicon octicon-link"></span></a>Everything is an Object</h1>
+
+<hr><h2>
+<a name="even-primitives-are-objects" class="anchor" href="#even-primitives-are-objects"><span class="octicon octicon-link"></span></a>Even primitives are objects</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// strings are objects</span>
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Christopher"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+
+<span class="c1">// numbers are objects</span>
+<span class="kd">var</span> <span class="nx">myNumber</span> <span class="o">=</span> <span class="mf">13.27</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">myNumber</span><span class="p">,</span> <span class="nx">myNumber</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">());</span>
+
+<span class="c1">// objects are objects</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"title"</span><span class="o">:</span> <span class="s2">"Leviathan Wakes"</span><span class="p">,</span>
+  <span class="s2">"author"</span><span class="o">:</span> <span class="s2">"James S. A. Corey"</span>
+  <span class="s2">"pages"</span><span class="o">:</span> <span class="mi">561</span>
+<span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span><span class="p">,</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">author</span><span class="p">)</span>
+
+<span class="c1">// functions are objects</span>
+<span class="kd">var</span> <span class="nx">fun</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">myFun</span><span class="p">()</span> <span class="p">{}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">fun</span><span class="p">,</span> <span class="nx">fun</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</pre></div>
+
+<h2>
+<a name="objects-can-contain-simple-or-complex-types" class="anchor" href="#objects-can-contain-simple-or-complex-types"><span class="octicon octicon-link"></span></a>Objects can contain simple or complex types</h2>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">recording</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+
+<span class="c1">// number</span>
+<span class="nx">recording</span><span class="p">.</span><span class="nx">duration</span> <span class="o">=</span> <span class="mi">31000</span><span class="p">;</span>
+
+<span class="c1">// string</span>
+<span class="nx">recording</span><span class="p">.</span><span class="nx">slug</span> <span class="o">=</span> <span class="s2">"Cat Roomba Video"</span><span class="p">;</span>
+
+<span class="c1">// array</span>
+<span class="nx">recording</span><span class="p">.</span><span class="nx">tags</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"funny"</span><span class="p">,</span> <span class="s2">"lolcat"</span><span class="p">,</span> <span class="s2">"roomba"</span><span class="p">];</span>
+
+<span class="c1">// object</span>
+<span class="nx">recording</span><span class="p">.</span><span class="nx">meta</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">"bureau"</span> <span class="o">:</span> <span class="s2">"DC"</span><span class="p">,</span>
+  <span class="s2">"date"</span> <span class="o">:</span> <span class="s2">"08/12/2007"</span>
+<span class="p">};</span>
+
+<span class="c1">// function</span>
+<span class="nx">recording</span><span class="p">.</span><span class="nx">getDuration</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">duration</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">recording</span><span class="p">);</span>
 </pre></div>
       </section>
       <footer>
