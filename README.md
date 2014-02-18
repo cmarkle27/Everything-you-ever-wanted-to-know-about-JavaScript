@@ -1,10 +1,7 @@
-Everything-you-ever-wanted-to-know-about-JavaScript
-===================================================
-
-(But were afraid to ask)
+# JavaScript Looks Familiar
 
 
-## Designed to be easy for developers to pick up  
+### Designed to be easy for developers to pick up  
 
 ```javascript
 if (encoder.state == "cue record") {
@@ -12,7 +9,7 @@ if (encoder.state == "cue record") {
 }
 ```
 
-## Is actually based on the languages Scheme and Self  
+### Is actually based on the languages Scheme and Self  
 
 ```javascript
 function Y(le) {
@@ -28,8 +25,14 @@ function Y(le) {
 var sliced = Array.prototype.slice.call(arguments, 2);
 ```
 
+
 # JavaScript Requires an Environment  
 
-## Provides a root object and an environment API
+### Provides a root object and an environment API
 
 Browser: window object and the DOM + BOM 
+
+
+
+
+
