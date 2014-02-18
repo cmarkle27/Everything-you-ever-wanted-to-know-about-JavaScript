@@ -245,6 +245,7 @@ var Animal = function(species) {
 
 var carl = new Animal("tiger");
 
+console.log(carl);
 console.log(carl.constructor);
 console.log(carl instanceof Animal);
 console.log(carl instanceof Object);
@@ -364,8 +365,8 @@ var myFunction = (function() {
     console.log(foo); // logs 1
 	
     var myNestedFunction = (function() {
-	var foo = 2; // local scope
-	console.log( foo); // logs 2
+        var foo = 2; // local scope
+        console.log( foo); // logs 2
     })();
 
 })();
@@ -373,7 +374,6 @@ var myFunction = (function() {
 eval('var foo = 3; console.log( foo);'); // eval() scope
 
 ```
-
 
 ### Variables are defined at parse time (lexical scoping)
 
@@ -393,16 +393,19 @@ foo(); // logs 60
 ### Closures 
 
 ```javascript
-var parentFunction = function() {
-    var foo = 'foo';
-    return function() { // anonymous function being returned 
-    	console.log(foo); // logs 'foo'
+var counterFactory = function() {
+    var counter = 0;
+    return function() { 
+        counter++;
+    	console.log(counter);
     }
-} // nestedFunction refers to the nested function returned from parentFunction 
+}
 
-var nestedFunction = parentFunction();
+var count = counterFactory();
 
-nestedFunction();
+count();
+count();
+count();
 ```
 
 <br><br><br>
@@ -410,7 +413,75 @@ nestedFunction();
 # Execution Context
 
 ***  
-...
+
+### The 'this' Keyword
+* refers to current execution contexts
+
+### Four possible contexts
+
+* Function 
+
+```javascript
+function add(x, y) {
+    // 'this' refers to the global object 
+    var sum = this.x + this.y;
+
+    // most likely NaN
+    return sum;
+}
+```
+
+* Object Method
+
+```javascript
+var person = {
+    name: "Chris",
+    sayHello: function() {
+        // refers to the person object
+        return this.name; 
+    }
+}
+
+person.sayHello();
+```
+
+* Constructor 
+
+```javascript
+function SpaceShip(name) {
+    this.name = name; // it depends
+    return this; // implied
+}
+
+// refers to the new object, this.name will equal "Millennium Falcon"
+var transport = new SpaceShip("Millennium Falcon"); 
+
+// refers to the global object, this.name will be undefined
+var transport = SpaceShip("Millennium Falcon"); 
+```
+
+* Call & Apply
+
+```javascript
+var person = {
+    name: "Chris",
+    sayHello: function() {
+        // refers to the invoking object
+        return this.name; 
+    }
+}
+
+var zombie = {
+    name: "Fred"
+}
+
+// refers to zombie, this.name will be "Fred"
+person.sayHello.apply(zombie, params);
+```
+
+
+
+
 
 
 
