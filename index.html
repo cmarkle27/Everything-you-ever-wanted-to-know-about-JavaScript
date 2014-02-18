@@ -224,22 +224,7 @@
 <h3>
 <a name="this-fits-well-with-event-driven-programming" class="anchor" href="#this-fits-well-with-event-driven-programming"><span class="octicon octicon-link"></span></a>This fits well with event driven programming</h3>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">buttonA</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"buttonA"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">buttonB</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"buttonB"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">outputDiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"myOutput"</span><span class="p">);</span>
-
-<span class="kd">var</span> <span class="nx">buttonClicked</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">outputDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"Button clicked (named)"</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// named function</span>
-<span class="nx">buttonA</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="nx">buttonClicked</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
-
-<span class="c1">// anonymous function</span>
-<span class="nx">buttonB</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">outputDiv</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">"Button clicked (anonymous)"</span><span class="p">;</span>
-<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
-</pre></div>
+<p><a href="http://jsbin.com/zidad/2/edit?html,js,output">http://jsbin.com/zidad/2/edit?html,js,output</a></p>
 
 <p><br><br><br></p>
 
@@ -286,7 +271,130 @@
 <h1>
 <a name="javascript-is-prototypal" class="anchor" href="#javascript-is-prototypal"><span class="octicon octicon-link"></span></a>JavaScript is Prototypal</h1>
 
-<hr>
+<hr><h3>
+<a name="instances-are-created-from-objects-instead-of-classes" class="anchor" href="#instances-are-created-from-objects-instead-of-classes"><span class="octicon octicon-link"></span></a>Instances are created from objects instead of classes</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">species</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">=</span> <span class="nx">species</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">birthday</span> <span class="o">=</span> <span class="s2">"02/11/2014"</span><span class="p">;</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// implied</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">carl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s2">"tiger"</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span><span class="p">.</span><span class="nx">constructor</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span> <span class="k">instanceof</span> <span class="nx">Animal</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">);</span>
+</pre></div>
+
+<h3>
+<a name="inherit-built-in-properties" class="anchor" href="#inherit-built-in-properties"><span class="octicon octicon-link"></span></a>Inherit built-in properties</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// inherited object properties</span>
+<span class="kd">var</span> <span class="nx">serenity</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">"class"</span><span class="o">:</span> <span class="s2">"Firefly"</span><span class="p">,</span> <span class="s2">"captain"</span><span class="o">:</span> <span class="s2">"Malcolm Reynolds"</span> <span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">serenity</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">serenity</span><span class="p">.</span><span class="nx">constructor</span><span class="p">);</span>
+
+<span class="c1">// inherited function properties</span>
+<span class="kd">var</span> <span class="nx">spaceShip</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">launcher</span><span class="p">(</span><span class="nx">vehicle</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">vehicle</span> <span class="o">+</span> <span class="s2">" blasting off!"</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">spaceShip</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">spaceShip</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">spaceShip</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+<span class="c1">// inherited array properties</span>
+<span class="kd">var</span> <span class="nx">groceries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"turkey"</span><span class="p">,</span> <span class="s2">"bread"</span><span class="p">,</span> <span class="s2">"cheese"</span><span class="p">,</span> <span class="s2">"carrots"</span><span class="p">];</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">groceries</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">groceries</span><span class="p">.</span><span class="nx">reverse</span><span class="p">());</span>
+</pre></div>
+
+<h3>
+<a name="can-model-classical-inheritance-but-dont" class="anchor" href="#can-model-classical-inheritance-but-dont"><span class="octicon octicon-link"></span></a>Can model classical inheritance (but don’t)</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// Animal Constructor</span>
+<span class="kd">function</span> <span class="nx">Animal</span><span class="p">(</span><span class="nx">species</span><span class="p">)</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">=</span> <span class="nx">species</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">=</span> <span class="s2">"..."</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Animal.prototype is a generic object we can add properties to</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">makeNoise</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">reportEnergy</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Energy Level:"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
+<span class="p">};</span> 
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">food</span><span class="p">){</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="nx">food</span> <span class="k">instanceof</span> <span class="nx">Food</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>  
+
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sleep</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// Tiger Constructor</span>
+<span class="kd">var</span> <span class="nx">Tiger</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">=</span> <span class="s1">'Meow!'</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Tiger</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s1">'Tiger'</span><span class="p">);</span>
+
+<span class="nx">Tiger</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">food</span><span class="p">){</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="nx">food</span> <span class="k">instanceof</span> <span class="nx">Food</span> <span class="o">&amp;&amp;</span> <span class="nx">food</span><span class="p">.</span><span class="nx">type</span> <span class="o">!==</span> <span class="s1">'grain'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Instance</span>
+<span class="kd">var</span> <span class="nx">timmy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tiger</span><span class="p">();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">timmy</span><span class="p">);</span>
+
+<span class="c1">// ----------------------------------------------------------------</span>
+
+<span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">makeNoise</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s2">" I am a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s2">". Energy: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// Tiger Constructor</span>
+<span class="kd">var</span> <span class="nx">Tiger</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+    <span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">=</span> <span class="s1">'Meow!'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">=</span> <span class="s1">'Tiger'</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>  
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">timmy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tiger</span><span class="p">();</span>
+
+<span class="c1">// use duck typing</span>
+<span class="nx">Animal</span><span class="p">.</span><span class="nx">makeNoise</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">timmy</span><span class="p">);</span>
+</pre></div>
+
+<p><br><br><br></p>
+
+<h1>
+<a name="the-scope-chain" class="anchor" href="#the-scope-chain"><span class="octicon octicon-link"></span></a>The Scope Chain</h1>
+
+<hr><h3>
+<a name="function-level-not-block-level" class="anchor" href="#function-level-not-block-level"><span class="octicon octicon-link"></span></a>Function level (not block level)</h3>
+
+<h3>
+<a name="variables-are-defined-at-parse-time-lexical-scoping" class="anchor" href="#variables-are-defined-at-parse-time-lexical-scoping"><span class="octicon octicon-link"></span></a>Variables are defined at parse time (lexical scoping)</h3>
+
+<h3>
+<a name="closures" class="anchor" href="#closures"><span class="octicon octicon-link"></span></a>Closures</h3>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
