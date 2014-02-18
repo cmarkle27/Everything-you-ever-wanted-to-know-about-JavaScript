@@ -26,7 +26,6 @@ function Y(le) {
 var sliced = Array.prototype.slice.call(arguments, 2);
 ```
 <br><br><br>
-<br><br><br>
 
 # JavaScript Requires an Environment  
 
@@ -37,6 +36,7 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 * Browser: window object and the DOM + BOM  
 * Server: process object and the native modules 
 
+<br><br><br>
 <br><br><br>
 
 # Single Threaded and Event Driven 
