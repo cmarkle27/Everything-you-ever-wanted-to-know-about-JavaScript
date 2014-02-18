@@ -24,13 +24,10 @@ function Y(le) {
 
 var sliced = Array.prototype.slice.call(arguments, 2);
 ```
->    
->  
+<br><br>
+
 ***    
->  
->  
->  
-  
+
 # JavaScript Requires an Environment  
 
 ## Provides a root object and an environment API
