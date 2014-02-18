@@ -2,7 +2,7 @@
 
 ***  
 
-## __Designed to be easy for developers to pick up__  
+### __Designed to be easy for developers to pick up__  
 
 ```javascript
 if (encoder.state == "cue record") {
@@ -10,7 +10,7 @@ if (encoder.state == "cue record") {
 }
 ```
 
-## __Is actually based on the languages Scheme and Self__  
+### __Is actually based on the languages Scheme and Self__  
 
 ```javascript
 function Y(le) {
@@ -31,7 +31,7 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 
 ***  
 
-## __Provides a root object and an environment API__
+### __Provides a root object and an environment API__
 
 * Browser: window object and the DOM + BOM  
 * Server: process object and the native modules 
@@ -105,7 +105,7 @@ console.log(myCar);
 
 ***  
 
-## Even primitives are objects
+### Even primitives are objects
 
 ```javascript
 // strings are objects
@@ -129,7 +129,7 @@ var fun = function myFun() {}
 console.log(typeof fun, fun.name);
 ```
 
-## Objects can contain simple or complex types
+### Objects can contain simple or complex types
 
 ```javascript
 var recording = new Object();
@@ -162,7 +162,7 @@ console.log(recording);
 
 ***  
 
-<iframe width="420" height="315" src="//www.youtube.com/embed/wBqzjH91WFo" frameborder="0" allowfullscreen></iframe>
+[http://youtu.be/wBqzjH91WFo](http://youtu.be/wBqzjH91WFo)
 
 <br><br><br>
 
