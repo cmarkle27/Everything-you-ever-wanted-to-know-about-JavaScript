@@ -165,10 +165,91 @@ console.log(recording);
 [http://youtu.be/wBqzjH91WFo](http://youtu.be/wBqzjH91WFo)
 
 <br><br><br>
+<br><br><br>
 
 # JavaScript is Functional
 
 ***  
+
+### Functions can be passed as values
+
+```javascript
+var sayHello = function() {
+  return "Howdy!";
+};
+
+console.log(sayHello())
+
+console.log(sayHello)
+```
+
+### This fits well with event driven programming
+
+```javascript
+var buttonA = document.getElementById("buttonA");
+var buttonB = document.getElementById("buttonB");
+var outputDiv = document.getElementById("myOutput");
+
+var buttonClicked = function(event) {
+  outputDiv.innerHTML = "Button clicked (named)";
+}
+
+// named function
+buttonA.addEventListener("click", buttonClicked, false);
+
+// anonymous function
+buttonB.addEventListener("click", function(event) {
+  outputDiv.innerHTML = "Button clicked (anonymous)";
+}, false);
+```
+
+<br><br><br>
+
+# Constructor Functions
+
+***  
+
+### Returns an object instance when used with the new keyword
+
+```javascript
+var Animal = function(species) {
+  this.species = species;
+  this.birthday = "02/11/2014";
+  return this; // implied
+};
+
+var carl = new Animal("tiger");
+console.log(carl);
+```
+
+### Nine native object constructor functions
+
+```javascript
+// these cause trouble
+new String("hello");
+new Number(9);
+new Boolean(false);
+
+// these are better as literals
+new RegExp('\ bt[ a-z] +\ b');
+new Object();
+new Array("a", "b", "c");
+new Function(" x", "y", "return x * y");
+
+// these are ok
+new Error("message");
+new Date();
+
+// this object is not a constructor
+Math
+```
+
+<br><br><br>
+
+# JavaScript is Prototypal
+
+***  
+
 
 
 
