@@ -282,6 +282,7 @@
 
 <span class="kd">var</span> <span class="nx">carl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Animal</span><span class="p">(</span><span class="s2">"tiger"</span><span class="p">);</span>
 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span><span class="p">.</span><span class="nx">constructor</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span> <span class="k">instanceof</span> <span class="nx">Animal</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">carl</span> <span class="k">instanceof</span> <span class="nb">Object</span><span class="p">);</span>
@@ -400,8 +401,8 @@
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 1</span>
 
     <span class="kd">var</span> <span class="nx">myNestedFunction</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// local scope</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 2</span>
+        <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// local scope</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 2</span>
     <span class="p">})();</span>
 
 <span class="p">})();</span>
@@ -428,16 +429,19 @@
 <h3>
 <a name="closures" class="anchor" href="#closures"><span class="octicon octicon-link"></span></a>Closures</h3>
 
-<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">parentFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">;</span>
-    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// anonymous function being returned </span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 'foo'</span>
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">counterFactory</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">counter</span><span class="p">);</span>
     <span class="p">}</span>
-<span class="p">}</span> <span class="c1">// nestedFunction refers to the nested function returned from parentFunction </span>
+<span class="p">}</span>
 
-<span class="kd">var</span> <span class="nx">nestedFunction</span> <span class="o">=</span> <span class="nx">parentFunction</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">counterFactory</span><span class="p">();</span>
 
-<span class="nx">nestedFunction</span><span class="p">();</span>
+<span class="nx">count</span><span class="p">();</span>
+<span class="nx">count</span><span class="p">();</span>
+<span class="nx">count</span><span class="p">();</span>
 </pre></div>
 
 <p><br><br><br></p>
@@ -445,7 +449,69 @@
 <h1>
 <a name="execution-context" class="anchor" href="#execution-context"><span class="octicon octicon-link"></span></a>Execution Context</h1>
 
-<hr><p>...</p>
+<hr><h3>
+<a name="the-this-keyword" class="anchor" href="#the-this-keyword"><span class="octicon octicon-link"></span></a>The 'this' Keyword</h3>
+
+<ul>
+<li>refers to current execution contexts</li>
+</ul><h3>
+<a name="four-possible-contexts" class="anchor" href="#four-possible-contexts"><span class="octicon octicon-link"></span></a>Four possible contexts</h3>
+
+<ul>
+<li>Function </li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 'this' refers to the global object </span>
+    <span class="kd">var</span> <span class="nx">sum</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">y</span><span class="p">;</span>
+
+    <span class="c1">// most likely NaN</span>
+    <span class="k">return</span> <span class="nx">sum</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<ul>
+<li>Object Method</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">"Chris"</span><span class="p">,</span>
+    <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// refers to the person object</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</pre></div>
+
+<ul>
+<li>Constructor </li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">// it depends</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span> <span class="c1">// implied</span>
+<span class="p">}</span>
+
+<span class="c1">// refers to the new object, this.name will equal "Millennium Falcon"</span>
+<span class="kd">var</span> <span class="nx">transport</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="s2">"Millennium Falcon"</span><span class="p">);</span> 
+
+<span class="c1">// refers to the global object, this.name will be undefined</span>
+<span class="kd">var</span> <span class="nx">transport</span> <span class="o">=</span> <span class="nx">SpaceShip</span><span class="p">(</span><span class="s2">"Millennium Falcon"</span><span class="p">);</span> 
+</pre></div>
+
+<ul>
+<li>Call &amp; Apply</li>
+</ul><div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">"Chris"</span><span class="p">,</span>
+    <span class="nx">sayHello</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// refers to the invoking object</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span> 
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">zombie</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s2">"Fred"</span>
+<span class="p">}</span>
+
+<span class="c1">// refers to zombie, this.name will be "Fred"</span>
+<span class="nx">person</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">zombie</span><span class="p">,</span> <span class="nx">params</span><span class="p">);</span>
+</pre></div>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
