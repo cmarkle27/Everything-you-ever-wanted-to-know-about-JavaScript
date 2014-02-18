@@ -356,26 +356,39 @@ Animal.makeNoise.call(timmy);
 ### Function level (not block level)
 
 ```javascript
-// loop
-var make;
+var foo = 0; // global scope 
+console.log(foo); // logs 0
 
-for (var i = 0; i < 5; i++) {
-  make = "Ford";
-}
+var myFunction = (function() {
+	var foo = 1; // local scope
+	console.log(foo); // logs 1
+	
+	var myNestedFunction = (function() {
+		var foo = 2; // local scope
+		console.log( foo); // logs 2
+	})();
 
-console.log(make);
+})();
 
+eval('var foo = 3; console.log( foo);'); // eval() scope
 
-// function
-var getMake = function() {
-  var make = "Chevy";
-};
-
-console.log(make);
 ```
 
 
 ### Variables are defined at parse time (lexical scoping)
+
+```javascript
+var x = 10;
+var foo = function() {
+    var y = 20;
+    var bar = (function() {
+        var z = 30;
+        console.log(z + y + x); // z is local, y & z are found in the scope chain
+    })();
+};
+
+foo(); // logs 60
+```
 
 ### Closures 
 
