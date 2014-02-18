@@ -42,7 +42,30 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 
 ***  
 
-jaja
+### Basic flow of execution: 
+1. Script is parsed and lexed 
+1. Code is executed 
+1. Events are registered 
+1. Idles in event loop 
+1. Triggered events are added to the queue (return to 1) 
+
+```javascript
+// one thing at a time
+for (var i = 1; i < 1000; i++) {
+    console.log(i);
+    if (i === 250) alert("Wait!");
+}
+
+// events fire asynchronously
+var no;
+
+for(var i=1; i<=10; i++) {
+    no = i;
+    setTimeout(function() {
+       console.log('setting: ' + no);
+    }, 500);
+}
+```
 
 
 
