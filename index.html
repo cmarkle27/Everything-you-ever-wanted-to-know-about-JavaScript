@@ -351,7 +351,7 @@
 
 <span class="nx">Tiger</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">food</span><span class="p">){</span> 
     <span class="k">if</span> <span class="p">(</span><span class="nx">food</span> <span class="k">instanceof</span> <span class="nx">Food</span> <span class="o">&amp;&amp;</span> <span class="nx">food</span><span class="p">.</span><span class="nx">type</span> <span class="o">!==</span> <span class="s1">'grain'</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 
@@ -365,10 +365,10 @@
 <a name="duck-typing" class="anchor" href="#duck-typing"><span class="octicon octicon-link"></span></a>Duck Typing</h3>
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">makeNoise</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">makeNoise</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s2">" I am a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s2">". Energy: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
-  <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s2">" I am a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s2">". Energy: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
+    <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="c1">// Tiger Constructor</span>
@@ -400,8 +400,8 @@
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 1</span>
 
     <span class="kd">var</span> <span class="nx">myNestedFunction</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// local scope</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 2</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="c1">// local scope</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span> <span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 2</span>
     <span class="p">})();</span>
 
 <span class="p">})();</span>
@@ -427,6 +427,25 @@
 
 <h3>
 <a name="closures" class="anchor" href="#closures"><span class="octicon octicon-link"></span></a>Closures</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">parentFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="c1">// anonymous function being returned </span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// logs 'foo'</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="c1">// nestedFunction refers to the nested function returned from parentFunction </span>
+
+<span class="kd">var</span> <span class="nx">nestedFunction</span> <span class="o">=</span> <span class="nx">parentFunction</span><span class="p">();</span>
+
+<span class="nx">nestedFunction</span><span class="p">();</span>
+</pre></div>
+
+<p><br><br><br></p>
+
+<h1>
+<a name="execution-context" class="anchor" href="#execution-context"><span class="octicon octicon-link"></span></a>Execution Context</h1>
+
+<hr><p>...</p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
