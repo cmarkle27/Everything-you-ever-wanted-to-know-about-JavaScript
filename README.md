@@ -27,7 +27,7 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 <br><br>
 
 ***    
-<br><br>
+<br>
 
 # JavaScript Requires an Environment  
 
@@ -39,7 +39,7 @@ var sliced = Array.prototype.slice.call(arguments, 2);
 <br><br>
 
 ***    
-<br><br>
+<br>
 
 # Single Threaded and Event Driven 
 
