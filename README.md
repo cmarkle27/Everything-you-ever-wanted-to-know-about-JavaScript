@@ -59,13 +59,45 @@ for (var i = 1; i < 1000; i++) {
 // events fire asynchronously
 var no;
 
-for(var i=1; i<=10; i++) {
+for (var i = 1; i <= 10; i++) {
     no = i;
     setTimeout(function() {
        console.log('setting: ' + no);
     }, 500);
 }
 ```
+
+<br><br><br>
+
+***  
+
+# Variables 
+### Declared with “var” keyword
+### Dynamically typed
+### Simple types are copied by value
+### Complex types are copied by reference
+
+```javascript
+// simple values like are copied by value
+var a = 7;
+var b = a;
+a = 4;
+console.log(a, b);
+
+// complex values are passed by reference
+var yourCar = new Object();
+yourCar.make = "Ford";
+yourCar.model = "Mustang";
+yourCar.mileage = 28000;
+
+var myCar = yourCar;
+yourCar.mileage = 30000;
+
+console.log(myCar);
+```
+
+
+
 
 
 
