@@ -42,16 +42,18 @@
         <h1>
 <a name="javascript-looks-familiar" class="anchor" href="#javascript-looks-familiar"><span class="octicon octicon-link"></span></a>JavaScript Looks Familiar</h1>
 
-<h3>
-<a name="designed-to-be-easy-for-developers-to-pick-up" class="anchor" href="#designed-to-be-easy-for-developers-to-pick-up"><span class="octicon octicon-link"></span></a>Designed to be easy for developers to pick up</h3>
+<hr><h2>
+<a name="designed-to-be-easy-for-developers-to-pick-up" class="anchor" href="#designed-to-be-easy-for-developers-to-pick-up"><span class="octicon octicon-link"></span></a><strong>Designed to be easy for developers to pick up</strong>
+</h2>
 
 <div class="highlight highlight-javascript"><pre><span class="k">if</span> <span class="p">(</span><span class="nx">encoder</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="s2">"cue record"</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">beginRecording</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 
-<h3>
-<a name="is-actually-based-on-the-languages-scheme-and-self" class="anchor" href="#is-actually-based-on-the-languages-scheme-and-self"><span class="octicon octicon-link"></span></a>Is actually based on the languages Scheme and Self</h3>
+<h2>
+<a name="is-actually-based-on-the-languages-scheme-and-self" class="anchor" href="#is-actually-based-on-the-languages-scheme-and-self"><span class="octicon octicon-link"></span></a><strong>Is actually based on the languages Scheme and Self</strong>
+</h2>
 
 <div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">Y</span><span class="p">(</span><span class="nx">le</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">f</span><span class="p">)</span> <span class="p">{</span>
@@ -66,13 +68,84 @@
 <span class="kd">var</span> <span class="nx">sliced</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arguments</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </pre></div>
 
+<p><br><br><br></p>
+
 <h1>
 <a name="javascript-requires-an-environment" class="anchor" href="#javascript-requires-an-environment"><span class="octicon octicon-link"></span></a>JavaScript Requires an Environment</h1>
 
-<h3>
-<a name="provides-a-root-object-and-an-environment-api" class="anchor" href="#provides-a-root-object-and-an-environment-api"><span class="octicon octicon-link"></span></a>Provides a root object and an environment API</h3>
+<hr><h2>
+<a name="provides-a-root-object-and-an-environment-api" class="anchor" href="#provides-a-root-object-and-an-environment-api"><span class="octicon octicon-link"></span></a><strong>Provides a root object and an environment API</strong>
+</h2>
 
-<p>Browser: window object and the DOM + BOM </p>
+<ul>
+<li>Browser: window object and the DOM + BOM<br>
+</li>
+<li>Server: process object and the native modules </li>
+</ul><p><br><br><br></p>
+
+<h1>
+<a name="single-threaded-and-event-driven" class="anchor" href="#single-threaded-and-event-driven"><span class="octicon octicon-link"></span></a>Single Threaded and Event Driven</h1>
+
+<hr><h3>
+<a name="basic-flow-of-execution" class="anchor" href="#basic-flow-of-execution"><span class="octicon octicon-link"></span></a>Basic flow of execution:</h3>
+
+<ol>
+<li>Script is parsed and lexed </li>
+<li>Code is executed </li>
+<li>Events are registered </li>
+<li>Idles in event loop </li>
+<li>Triggered events are added to the queue (return to 1) </li>
+</ol><div class="highlight highlight-javascript"><pre><span class="c1">// one thing at a time</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">250</span><span class="p">)</span> <span class="nx">alert</span><span class="p">(</span><span class="s2">"Wait!"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// events fire asynchronously</span>
+<span class="kd">var</span> <span class="nx">no</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">no</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'setting: '</span> <span class="o">+</span> <span class="nx">no</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><br><br><br></p>
+
+<hr><h1>
+<a name="variables" class="anchor" href="#variables"><span class="octicon octicon-link"></span></a>Variables</h1>
+
+<h3>
+<a name="declared-with-var-keyword" class="anchor" href="#declared-with-var-keyword"><span class="octicon octicon-link"></span></a>Declared with “var” keyword</h3>
+
+<h3>
+<a name="dynamically-typed" class="anchor" href="#dynamically-typed"><span class="octicon octicon-link"></span></a>Dynamically typed</h3>
+
+<h3>
+<a name="simple-types-are-copied-by-value" class="anchor" href="#simple-types-are-copied-by-value"><span class="octicon octicon-link"></span></a>Simple types are copied by value</h3>
+
+<h3>
+<a name="complex-types-are-copied-by-reference" class="anchor" href="#complex-types-are-copied-by-reference"><span class="octicon octicon-link"></span></a>Complex types are copied by reference</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// simple values like are copied by value</span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+
+<span class="c1">// complex values are passed by reference</span>
+<span class="kd">var</span> <span class="nx">yourCar</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">make</span> <span class="o">=</span> <span class="s2">"Ford"</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="s2">"Mustang"</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="mi">28000</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">myCar</span> <span class="o">=</span> <span class="nx">yourCar</span><span class="p">;</span>
+<span class="nx">yourCar</span><span class="p">.</span><span class="nx">mileage</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myCar</span><span class="p">);</span>
+</pre></div>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/markle976">markle976</a></p>
