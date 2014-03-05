@@ -352,7 +352,7 @@
 
 <span class="nx">Tiger</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">eat</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">food</span><span class="p">){</span> 
     <span class="k">if</span> <span class="p">(</span><span class="nx">food</span> <span class="k">instanceof</span> <span class="nx">Food</span> <span class="o">&amp;&amp;</span> <span class="nx">food</span><span class="p">.</span><span class="nx">type</span> <span class="o">!==</span> <span class="s1">'grain'</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">};</span>
 
@@ -367,7 +367,7 @@
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">Animal</span> <span class="o">=</span> <span class="p">{</span>
     <span class="nx">makeNoise</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">energy</span> <span class="o">-=</span> <span class="mi">3</span><span class="p">;</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">sound</span> <span class="o">+</span> <span class="s2">" I am a "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">species</span> <span class="o">+</span> <span class="s2">". Energy: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">energy</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">};</span>
