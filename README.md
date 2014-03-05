@@ -316,7 +316,7 @@ Tiger.prototype = new Animal('Tiger');
  
 Tiger.prototype.eat = function(food){ 
     if (food instanceof Food && food.type !== 'grain') {
-	this.energy += 5;
+        this.energy += 5;
     }
 };
 
@@ -330,8 +330,8 @@ console.log(timmy);
 ```javascript
 var Animal = {
     makeNoise: function() {
-	this.energy -= 3;
-    	console.log(this.sound + " I am a " + this.species + ". Energy: " + this.energy);
+        this.energy -= 3;
+        console.log(this.sound + " I am a " + this.species + ". Energy: " + this.energy);
     }
 };
 
